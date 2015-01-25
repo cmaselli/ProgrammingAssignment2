@@ -60,15 +60,29 @@ cacheSolve <- function(x, ...) {
 
 ###############################################################################
 
-## Test for the functions in this module.
+## Simple test for the functions in this module.
 
 test <- function(x, ...) {
 
-    cacheMatrix <- makeCacheMatrix()
+    #B = matrix(4:7,nrow=2,ncol=2) to 
+    #B = matrix(1:4,nrow=2,ncol=2)
     
-    result      <- cacheSolve(cacheMatrix)
+    b1 <- matrix(c(1,2,3,2,5,2,6,-3,1), nrow=3, ncol=3)
+    b2 <- matrix(c(1,2,6,2,5,-3,3,2,1), nrow=3, ncol=3)
+    a  <- makeCacheMatrix(b1)
+    r1 <- cacheSolve(a)
+    #[,1]        [,2]        [,3]
+    #[1,] -0.1428571 -0.12987013  0.46753247
+    #[2,]  0.1428571  0.22077922 -0.19480519
+    #[3,]  0.1428571 -0.05194805 -0.01298701
     
-    cacheMatrix
+    r2 <- cacheSolve(a)
+    #getting cached data
+    #[,1]        [,2]        [,3]
+    #[1,] -0.1428571 -0.12987013  0.46753247
+    #[2,]  0.1428571  0.22077922 -0.19480519
+    #[3,]  0.1428571 -0.05194805 -0.01298701
+    print (r1 == r2)
 }
 
 ###############################################################################
